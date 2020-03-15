@@ -1,0 +1,16 @@
+.goto {
+  text-decoration: none;
+
+  &::after {
+    content: ">";
+    position: relative;
+    left: -17px;
+    transition: left 1s 0.1s ease;
+  }
+
+  &:hover {
+    &:after {
+      left: 0;
+    }
+  }
+}

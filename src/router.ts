@@ -1,6 +1,7 @@
 import React from "react";
 import UniversalRouter from "universal-router";
 import { Index } from "./pages/index";
+import { Profile } from "./pages/profile"
 
 export const routes = [
   {
@@ -8,8 +9,8 @@ export const routes = [
     action: () => React.createElement(Index)
   },
   {
-    path: "/garalley",
-    action: () => React.createElement(Index)
+    path: "/profile",
+    action: () => React.createElement(Profile)
   }
 ];
 

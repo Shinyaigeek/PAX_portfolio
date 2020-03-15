@@ -1,3 +1,10 @@
+:root {
+  --header-background-color: #F5F4EB;
+
+  --theme-background: #FCFCF7;
+  --theme-color: #0A0A00;
+}
+
 @import "./_components/header";
 
 .page {
@@ -5,4 +12,6 @@
   min-height: calc(100vh - #{$footer_height} - #{$header_height});
   position: relative;
   top: $header_height;
+  color: var(--theme-color);
+  background: var(--theme-background);
 }

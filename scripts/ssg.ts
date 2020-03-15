@@ -15,3 +15,15 @@ router
     const html = helmet(renderToString(component), "index");
     fs.writeFileSync("./public/index.html", html);
   });
+
+router
+  .resolve({
+    pathname: "/profile"
+  })
+  .then(component => {
+    if (!component || component instanceof Promise) {
+      throw new Error("please check component");
+    }
+    const html = helmet(renderToString(component), "profile");
+    fs.writeFileSync("./public/profile.html", html);
+  });

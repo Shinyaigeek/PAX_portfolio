@@ -1,0 +1,36 @@
+@import "../variables";
+
+.slide {
+  height: 90vw;
+  max-height: 500px;
+  width: 100vw;
+  position: relative;
+
+  .slideel {
+    height: 90vw;
+    max-height: 500px;
+    width: 90vw;
+    max-width: 500px;
+    display: block;
+    position: absolute;
+  }
+
+  .front {
+    left: 5vw;
+    z-index: $slide_front;
+  }
+
+  .left {
+    left: 0;
+    z-index: $slide_left_right;
+  }
+
+  .left {
+    right: 0;
+    z-index: $slide_left_right;
+  }
+  .back {
+    left: 5vw;
+    z-index: $slide_back;
+  }
+}
