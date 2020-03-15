@@ -1,0 +1,12 @@
+@import "../variables";
+
+header {
+  height: $header_height;
+  .title {
+    height: 100%;
+    text-indent: -9999px;
+    background-image: url("../../static/header.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
