@@ -1,0 +1,34 @@
+{
+  "name": "PAX_portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:dev:styles": "parcel ./src/styles/layout.scss",
+    "build:dev:pages": "parcel ./src/pages/index.tsx",
+    "start": "yarn run build:dev:styles && yarn run build:dev:pages"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shinyaigeek/PAX_portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shinyaigeek/PAX_portfolio/issues"
+  },
+  "homepage": "https://github.com/Shinyaigeek/PAX_portfolio#readme",
+  "dependencies": {
+    "@types/react": "^16.9.23",
+    "@types/react-dom": "^16.9.5",
+    "now": "^17.0.4",
+    "parcel": "^1.12.4",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "typescript": "^3.8.3"
+  },
+  "devDependencies": {
+    "sass": "^1.26.3"
+  }
+}
