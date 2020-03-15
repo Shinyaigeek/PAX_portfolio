@@ -6,14 +6,15 @@
   "scripts": {
     "build:dev:styles": "parcel ./src/styles/layout.scss",
     "build:dev:pages": "parcel ./src/pages/index.tsx",
-    "start": "nodemon --ext tsx ts scss --watch src scripts static client --exec 'yarn run ssg:html && yarn run build:styles && yarn run build:pages && parcel serve ./public/index.html'",
+    "start": "nodemon --ext tsx ts scss --watch src scripts static client --exec 'yarn run ssg:html && yarn run build:styles && yarn run build:pages && yarn run ssg:img && parcel serve ./public/index.html'",
     "build:styles": "parcel build ./src/styles/layout.scss --out-dir public",
     "build:pages": "parcel build ./src/pages/index.tsx --out-dir public",
-    "build": "yarn run build:styles && yarn run build:pages && yarn run ssg:html",
+    "build": "yarn run build:styles && yarn run build:pages && yarn run ssg:html && yarn run ssg:img",
     "lint": "eslint src/*/**.tsx && stylelint src/styles/**.scss && stylelint src/styles/*/**.scss",
     "lint:fix": "eslint --fix src/*/**.tsx && stylelint --fix src/styles/**.scss && stylelint --fix src/styles/*/**.scss",
     "format": "prettier src/*/**.tsx --write --config .prettierrc && prettier src/styles/**.scss --write --config .prettierrc && prettier src/styles/*/**.scss --write --config .prettierrc && yarn run lint:fix",
-    "ssg:html": "ts-node ./scripts/ssg.ts"
+    "ssg:html": "ts-node ./scripts/ssg.ts",
+    "ssg:img": "ts-node ./scripts/copyImg.ts"
   },
   "husky": {
     "hooks": {
@@ -32,6 +33,8 @@
   },
   "homepage": "https://github.com/Shinyaigeek/PAX_portfolio#readme",
   "dependencies": {
+    "@types/fs-extra": "^8.1.0",
+    "@types/ncp": "^2.0.3",
     "@types/react": "^16.9.23",
     "@types/react-dom": "^16.9.5",
     "@types/universal-router": "^8.0.0",
@@ -43,7 +46,9 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.19.0",
+    "fs-extra": "^8.1.0",
     "husky": "^4.2.3",
+    "ncp": "^2.0.0",
     "nodemon": "^2.0.2",
     "now": "^17.0.4",
     "parcel": "^1.12.4",
