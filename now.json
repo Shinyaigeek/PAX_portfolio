@@ -1,6 +1,6 @@
 {
   "name": "pax_portfolio",
-  "version": 0.1,
+  "version": 2,
   "routes": [
       {"src": "/", "dest": "dist/index.html"}
   ],
