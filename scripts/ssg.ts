@@ -13,5 +13,5 @@ router
       throw new Error("please check component");
     }
     const html = helmet(renderToString(component));
-    fs.writeFileSync("./dist/index.html", html);
+    fs.writeFileSync("./public/index.html", html);
   });
