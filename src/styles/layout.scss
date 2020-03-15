@@ -1,1 +1,8 @@
 @import "./_components/header";
+
+.page {
+  height: max-content;
+  min-height: calc(100vh - #{$footer_height} - #{$header_height});
+  position: relative;
+  top: $header_height;
+}

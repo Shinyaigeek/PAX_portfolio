@@ -1,0 +1,27 @@
+@import "../variables";
+
+.profile {
+    width: 80vw;
+    max-width: 400px;
+    margin: 12px auto;
+    height: 80vw;
+    max-height: 400px;
+
+    .img {
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border: 1px solid red;
+            border-radius: 999px;
+        }
+    }
+
+    .profile {
+        .name {
+            font-size: 36px;
+            text-align: center;
+        }
+    }
+}

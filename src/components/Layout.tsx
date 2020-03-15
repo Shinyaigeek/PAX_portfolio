@@ -1,5 +1,6 @@
 import React from "react";
 import { Header } from "./Header";
+import { Footer } from "./Footer";
 
 export const Layout = (Component: (props?: any) => JSX.Element) => {
   return (props?: any) => (
@@ -9,6 +10,8 @@ export const Layout = (Component: (props?: any) => JSX.Element) => {
       <div className="page">
         <Component {...props} />
       </div>
+
+      <Footer />
     </>
   );
 };

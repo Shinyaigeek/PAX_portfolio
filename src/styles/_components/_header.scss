@@ -3,6 +3,9 @@
 header {
   height: $header_height;
   position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
   .title {
     height: 100%;
     text-indent: -9999px;
