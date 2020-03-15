@@ -9,7 +9,7 @@
     "start": "nodemon --ext tsx ts scss --watch src scripts static client --exec 'yarn run ssg:html && yarn run build:styles && yarn run build:pages && parcel serve ./public/index.html'",
     "build:styles": "parcel build ./src/styles/layout.scss --out-dir public",
     "build:pages": "parcel build ./src/pages/index.tsx --out-dir public",
-    "build": "yarn run build:styles && yarn run build:pages",
+    "build": "yarn run build:styles && yarn run build:pages && yarn run ssg:html",
     "lint": "eslint src/*/**.tsx && stylelint src/styles/**.scss && stylelint src/styles/*/**.scss",
     "lint:fix": "eslint --fix src/*/**.tsx && stylelint --fix src/styles/**.scss && stylelint --fix src/styles/*/**.scss",
     "format": "prettier src/*/**.tsx --write --config .prettierrc && prettier src/styles/**.scss --write --config .prettierrc && prettier src/styles/*/**.scss --write --config .prettierrc && yarn run lint:fix",
