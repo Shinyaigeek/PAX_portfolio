@@ -6,10 +6,14 @@
   "scripts": {
     "build:dev:styles": "parcel ./src/styles/layout.scss",
     "build:dev:pages": "parcel ./src/pages/index.tsx",
-    "start": "yarn run build:dev:styles && yarn run build:dev:pages",
+    "start": "nodemon --ext tsx ts scss --watch src scripts static client --exec 'yarn run ssg:html && yarn run build:styles && yarn run build:pages && parcel serve ./dist/index.html'",
+    "build:styles": "parcel build ./src/styles/layout.scss",
+    "build:pages": "parcel build ./src/pages/index.tsx",
+    "build": "yarn run build:styles && yarn run build:pages",
     "lint": "eslint src/*/**.tsx && stylelint src/styles/**.scss && stylelint src/styles/*/**.scss",
     "lint:fix": "eslint --fix src/*/**.tsx && stylelint --fix src/styles/**.scss && stylelint --fix src/styles/*/**.scss",
-    "format": "prettier src/*/**.tsx --write --config .prettierrc && prettier src/styles/**.scss --write --config .prettierrc && prettier src/styles/*/**.scss --write --config .prettierrc && yarn run lint:fix"
+    "format": "prettier src/*/**.tsx --write --config .prettierrc && prettier src/styles/**.scss --write --config .prettierrc && prettier src/styles/*/**.scss --write --config .prettierrc && yarn run lint:fix",
+    "ssg:html": "ts-node ./scripts/ssg.ts"
   },
   "husky": {
     "hooks": {
@@ -30,6 +34,7 @@
   "dependencies": {
     "@types/react": "^16.9.23",
     "@types/react-dom": "^16.9.5",
+    "@types/universal-router": "^8.0.0",
     "@typescript-eslint/eslint-plugin": "^2.23.0",
     "@typescript-eslint/parser": "^2.23.0",
     "eslint-config-airbnb": "^18.1.0",
@@ -39,6 +44,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.19.0",
     "husky": "^4.2.3",
+    "nodemon": "^2.0.2",
     "now": "^17.0.4",
     "parcel": "^1.12.4",
     "react": "^16.13.0",
@@ -46,7 +52,9 @@
     "stylelint-config-prettier": "^8.0.1",
     "stylelint-prettier": "^1.1.2",
     "stylelint-scss": "^3.14.2",
-    "typescript": "^3.8.3"
+    "ts-node": "^8.6.2",
+    "typescript": "^3.8.3",
+    "universal-router": "^9.0.1"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
