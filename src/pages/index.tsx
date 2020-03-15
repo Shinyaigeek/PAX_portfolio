@@ -1,10 +1,8 @@
-import React from "react"
-import { Top } from "../components/Top"
+import React from "react";
+import { Top } from "../components/Top";
 
-export const Index = () => {
-    return (
-        <div className="index">
-            <Top />
-        </div>
-    )
-}
+export const Index = () => (
+  <div className="index">
+    <Top />
+  </div>
+);
