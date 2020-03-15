@@ -1,0 +1,9 @@
+@import "../variables";
+
+.top {
+  height: calc(100vh - #{$header_height});
+  background-image: url("../../../static/top.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+}

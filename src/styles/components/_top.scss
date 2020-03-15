@@ -1,8 +1,0 @@
-@import "../variables";
-
-.top {
-  height: calc(100vh - $header_height);
-  background-image: url(/static/top.jpg);
-  background-size: contain;
-  width: 100vw;
-}
