@@ -1,5 +1,8 @@
 .goto {
   text-decoration: none;
+  color: var(--theme-color);
+  position: absolute;
+  right: 5vw;
 
   &::after {
     content: ">";

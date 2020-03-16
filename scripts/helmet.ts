@@ -15,7 +15,7 @@ export const helmet = (component: string, page: string, title?: string) => {
                 ${component}
             </div>
         </body>
-        // <script src="./${page}.js"></script>
+        <script src="./${page}.js"></script>
     </html>
     `;
 };
