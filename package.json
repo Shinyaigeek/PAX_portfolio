@@ -9,15 +9,16 @@
     "start": "nodemon --ext tsx --ext ts --ext scss --watch src --watch scripts --watch static --watch client --exec 'yarn run ssg:html && yarn run build:styles && yarn run build:client && parcel serve ./public/*.html'",
     "build:styles:index": "parcel build ./src/styles/pages/index.scss --out-dir public",
     "build:styles:profile": "parcel build ./src/styles/pages/profile.scss --out-dir public",
+    "build:styles:gallery": "parcel build ./src/styles/pages/gallery.scss --out-dir public",
     "build:styles:layout": "parcel build ./src/styles/layout.scss --out-dir public",
-    "build:styles": "yarn run build:styles:index && yarn run build:styles:layout && yarn run build:styles:profile",
-    "build": "yarn run build:styles && yarn run build:client && yarn run ssg:img && yarn run ssg:html",
+    "build:styles": "yarn run build:styles:index && yarn run build:styles:layout && yarn run build:styles:profile && yarn run build:styles:gallery",
+    "build": "yarn run build:styles && yarn run build:client && yarn run ssg:img && yarn run ssg:html && parcel build ./public/*.html",
     "lint": "eslint src/*/**.tsx && stylelint src/styles/**.scss && stylelint src/styles/*/**.scss",
     "lint:fix": "eslint --fix src/*/**.tsx && stylelint --fix src/styles/**.scss && stylelint --fix src/styles/*/**.scss",
     "format": "prettier src/*/**.tsx --write --config .prettierrc && prettier src/styles/**.scss --write --config .prettierrc && prettier src/styles/*/**.scss --write --config .prettierrc && yarn run lint:fix",
     "ssg:html": "ts-node ./scripts/ssg.ts",
     "ssg:img": "ts-node ./scripts/copyImg.ts",
-    "build:client": "parcel build ./client/index.ts --out-dir public && parcel build ./client/profile.ts --out-dir public"
+    "build:client": "parcel build ./client/index.ts --out-dir public && parcel build ./client/profile.ts --out-dir public && parcel build ./client/gallery.ts --out-dir public"
   },
   "husky": {
     "hooks": {
