@@ -1,5 +1,27 @@
 {
   "name": "pax_portfolio",
   "version": 2,
-  "trailingSlash": true
+  "trailingSlash": true,
+  "builds": [
+    {
+      "src": "getProfile.js",
+      "use": "@now/node"
+    },
+    {
+      "src": "*.html",
+      "use": "@now/static"
+    },
+    {
+      "src": "*.js",
+      "use": "@now/static"
+    },
+    {
+      "src": "*.css",
+      "use": "@now/static"
+    },
+    {
+      "src": "*.jps",
+      "use": "@now/static"
+    }
+  ]
 }

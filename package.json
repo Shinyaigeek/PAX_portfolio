@@ -18,7 +18,9 @@
     "format": "prettier src/*/**.tsx --write --config .prettierrc && prettier src/styles/**.scss --write --config .prettierrc && prettier src/styles/*/**.scss --write --config .prettierrc && yarn run lint:fix",
     "ssg:html": "ts-node ./scripts/ssg.ts",
     "ssg:img": "ts-node ./scripts/copyImg.ts",
-    "build:client": "parcel build ./client/index.ts --out-dir public && parcel build ./client/profile.ts --out-dir public && parcel build ./client/gallery.ts --out-dir public"
+    "build:client": "parcel build ./client/index.ts --out-dir public && parcel build ./client/profile.ts --out-dir public && parcel build ./client/gallery.ts --out-dir public",
+    "build:server:profile": "parcel build ./server/getProfile.ts --out-dir public",
+    "build:server": "yarn run build:server:profile"
   },
   "husky": {
     "hooks": {
