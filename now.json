@@ -4,23 +4,23 @@
   "trailingSlash": true,
   "builds": [
     {
-      "src": "getProfile.js",
+      "src": "/public/getProfile.js",
       "use": "@now/node"
     },
     {
-      "src": "*.html",
+      "src": "/public/*.html",
       "use": "@now/static"
     },
     {
-      "src": "*.js",
+      "src": "/public/*.js",
       "use": "@now/static"
     },
     {
-      "src": "*.css",
+      "src": "/public/*.css",
       "use": "@now/static"
     },
     {
-      "src": "*.jps",
+      "src": "/public/static/*.jpg",
       "use": "@now/static"
     }
   ]
