@@ -12,6 +12,30 @@ router
     if (!component || component instanceof Promise) {
       throw new Error("please check component");
     }
-    const html = helmet(renderToString(component), "index");
+    const html = helmet(renderToString(component), "main");
     fs.writeFileSync("./public/index.html", html);
+  });
+
+router
+  .resolve({
+    pathname: "/profile"
+  })
+  .then(component => {
+    if (!component || component instanceof Promise) {
+      throw new Error("please check component");
+    }
+    const html = helmet(renderToString(component), "profile");
+    fs.writeFileSync("./public/profile.html", html);
+  });
+
+router
+  .resolve({
+    pathname: "/gallery"
+  })
+  .then(component => {
+    if (!component || component instanceof Promise) {
+      throw new Error("please check component");
+    }
+    const html = helmet(renderToString(component), "gallery");
+    fs.writeFileSync("./public/gallery.html", html);
   });

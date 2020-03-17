@@ -1,0 +1,19 @@
+.goto {
+  text-decoration: none;
+  color: var(--theme-color);
+  position: absolute;
+  right: 5vw;
+
+  &::after {
+    content: ">";
+    position: relative;
+    left: -17px;
+    transition: left 1s 0.1s ease;
+  }
+
+  &:hover {
+    &:after {
+      left: 0;
+    }
+  }
+}

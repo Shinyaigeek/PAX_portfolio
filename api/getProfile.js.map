@@ -1,0 +1,1 @@
+{"version":3,"sources":["getProfile.ts"],"names":[],"mappings":";AAAA,aAAA,OAAA,eAAA,QAAA,aAAA,CAAA,OAAA,IAAA,QAAA,QAAe,WACb,QAAQ,IAAI","file":"getProfile.js","sourceRoot":"../../server","sourcesContent":["export default () => {\n  console.log(88888);\n};\n"]}

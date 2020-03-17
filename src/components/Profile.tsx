@@ -1,4 +1,5 @@
 import React from "react";
+import { Goto } from "./Goto";
 
 export const Profile = () => {
   return (
@@ -9,8 +10,9 @@ export const Profile = () => {
       </div>
       <div className="profile">
         <div className="name">Chie Shiraishi</div>
-        <div className="bio"></div>
+        <div className="bio">イラストレーター志望の学生です</div>
       </div>
+      <Goto slug="profile" label="Read MORE" />
     </div>
   );
 };

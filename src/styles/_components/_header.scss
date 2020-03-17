@@ -6,10 +6,13 @@ header {
   top: 0;
   left: 0;
   width: 100vw;
+  z-index: $header_z_index;
+  background: var(--header-background-color);
+
   .title {
     height: 100%;
     text-indent: -9999px;
-    background-image: url("../../static/header.jpg");
+    background-image: url("../../static/header.png");
     background-repeat: no-repeat;
     background-size: contain;
   }

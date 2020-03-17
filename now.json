@@ -1,5 +1,27 @@
 {
-  "name": "pax_portfolio",
   "version": 2,
-  "trailingSlash": true
+  "routes": [
+    {
+      "src": "/",
+      "dest": "index.html"
+    },
+    {
+      "src": "/public",
+      "dest": "public.html"
+    },
+    {
+      "src": "/gallery",
+      "dest": "gallery.html"
+    }
+  ],
+  "functions": {
+    "api/getProfile.ts": {
+      "memory":3008,
+      "maxDuration": 9
+    }
+  },
+  "env": {
+    "CONTENTFUL_ACCESS_TOKEN": "@contentful_access_token",
+    "CONTENTFUL_SPACE_ID": "@contentful_space_id"
+  }
 }
