@@ -1,9 +1,46 @@
 @import "../variables";
 
-.top {
+.top--wrapper {
   height: calc(100vh - #{$header_height});
+  width: 100vw;
+
+  .title {
+    background-image: url("../../../static/toptitle.png");
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+
+    position: absolute;
+    top: 30vh;
+    left: calc(50vw - 100px);
+
+    transition: all 0.7s ease 1s;
+
+    opacity: 1;
+    transform: translateX(0px);
+
+    &.out {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+
+    div {
+      text-indent: 9999px;
+    }
+  }
+}
+
+.top {
   background-image: url("../../../static/top.jpg");
   background-size: cover;
   background-position: center;
-  width: 100vw;
+
+  transition: opacity 0.6s ease 0.8s;
+  width: 100%;
+  height: 100%;
+
+  &.withOpacity {
+    opacity: 0.6;
+  }
 }

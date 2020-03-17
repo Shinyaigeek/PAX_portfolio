@@ -3,11 +3,12 @@
   color: var(--theme-color);
   position: absolute;
   right: 5vw;
+  font-size: 18px;
 
   &::after {
     content: ">";
     position: relative;
-    left: -17px;
+    left: -10px;
     transition: left 1s 0.1s ease;
   }
 

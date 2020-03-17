@@ -2,3 +2,24 @@
 @import "../_components/profile";
 @import "../_components/slide";
 @import "../_components/goto";
+
+h2 {
+  &:before {
+    content: "";
+    background-color: var(--sub-theme-color);
+    border-radius: 4px;
+    width: 12px;
+    height: 30px;
+    display: inline-block;
+    margin-right: 12px;
+    position: relative;
+    top: 6px;
+  }
+}
+
+.index {
+  .link {
+    position: relative;
+    height: 24px;
+  }
+}

@@ -1,0 +1,31 @@
+@import "../variables";
+
+.drawer--wrapper {
+  width: 200vw;
+  height: 200vh;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  z-index: $drawer_z_index;
+
+  transform: rotate(360deg);
+
+  transition: transform 1s ease;
+
+  &.out {
+    transform: rotate(180deg);
+    // z-index: $drawer_z_index_out;
+  }
+
+  .drawer {
+    width: 100vw;
+    height: 100vh;
+
+    position: relative;
+    top: 100vh;
+
+    background: red;
+  }
+}

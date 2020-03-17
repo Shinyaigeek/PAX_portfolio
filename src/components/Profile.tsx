@@ -12,7 +12,9 @@ export const Profile = () => {
         <div className="name">Chie Shiraishi</div>
         <div className="bio">イラストレーター志望の学生です</div>
       </div>
-      <Goto slug="profile" label="Read MORE" />
+      <div className="link">
+        <Goto slug="profile" label="Read MORE" />
+      </div>
     </div>
   );
 };
