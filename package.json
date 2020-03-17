@@ -7,7 +7,7 @@
     "build:dev:styles": "parcel ./src/styles/layout.scss",
     "build:dev:pages": "parcel ./src/pages/index.tsx",
     "start": "nodemon --ext tsx --ext ts --ext scss --watch src --watch scripts --watch static --watch client --exec 'yarn run ssg:html && yarn run build:styles && yarn run build:client && parcel serve ./public/*.html'",
-    "build:styles:index": "parcel build ./src/styles/pages/index.scss --out-dir public",
+    "build:styles:index": "parcel build ./src/styles/pages/main.scss --out-dir public",
     "build:styles:profile": "parcel build ./src/styles/pages/profile.scss --out-dir public",
     "build:styles:gallery": "parcel build ./src/styles/pages/gallery.scss --out-dir public",
     "build:styles:layout": "parcel build ./src/styles/layout.scss --out-dir public",
@@ -18,9 +18,7 @@
     "format": "prettier src/*/**.tsx --write --config .prettierrc && prettier src/styles/**.scss --write --config .prettierrc && prettier src/styles/*/**.scss --write --config .prettierrc && yarn run lint:fix",
     "ssg:html": "ts-node ./scripts/ssg.ts",
     "ssg:img": "ts-node ./scripts/copyImg.ts",
-    "build:client": "parcel build ./client/index.ts --out-dir public && parcel build ./client/profile.ts --out-dir public && parcel build ./client/gallery.ts --out-dir public",
-    "build:server:profile": "parcel build ./server/getProfile.ts --out-dir public",
-    "build:server": "yarn run build:server:profile"
+    "build:client": "parcel build ./client/main.ts --out-dir public && parcel build ./client/profile.ts --out-dir public && parcel build ./client/gallery.ts --out-dir public"
   },
   "husky": {
     "hooks": {
@@ -40,8 +38,11 @@
   "homepage": "https://github.com/Shinyaigeek/PAX_portfolio#readme",
   "dependencies": {
     "@material-ui/core": "^4.9.5",
+    "@material-ui/lab": "^4.0.0-alpha.45",
+    "@now/node": "^1.4.1",
     "@types/fs-extra": "^8.1.0",
     "@types/ncp": "^2.0.3",
+    "@types/node-fetch": "^2.5.5",
     "@types/react": "^16.9.23",
     "@types/react-dom": "^16.9.5",
     "@types/universal-router": "^8.0.0",
@@ -57,6 +58,7 @@
     "fs-extra": "^8.1.0",
     "husky": "^4.2.3",
     "ncp": "^2.0.0",
+    "node-fetch": "^2.6.0",
     "node-sass": "^4.13.1",
     "nodemon": "^2.0.2",
     "now": "^17.0.4",

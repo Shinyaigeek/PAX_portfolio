@@ -33,7 +33,7 @@ export const Slide = () => {
 
   return (
     <div className="slide">
-      {["/static/1.jpg", "/static/2.jpg", "/static/3.jpg", "/static/4.jpg"].map(
+      {["/static/1.png", "/static/2.png", "/static/3.png", "/static/4.png"].map(
         (slug, index) => {
           return (
             <SlideEl

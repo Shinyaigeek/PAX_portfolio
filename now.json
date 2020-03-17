@@ -1,27 +1,27 @@
 {
-  "name": "pax_portfolio",
   "version": 2,
-  "trailingSlash": true,
-  "builds": [
+  "routes": [
     {
-      "src": "/public/getProfile.js",
-      "use": "@now/node"
+      "src": "/",
+      "dest": "index.html"
     },
     {
-      "src": "/public/*.html",
-      "use": "@now/static"
+      "src": "/public",
+      "dest": "public.html"
     },
     {
-      "src": "/public/*.js",
-      "use": "@now/static"
-    },
-    {
-      "src": "/public/*.css",
-      "use": "@now/static"
-    },
-    {
-      "src": "/public/static/*.jpg",
-      "use": "@now/static"
+      "src": "/gallery",
+      "dest": "gallery.html"
     }
-  ]
+  ],
+  "functions": {
+    "api/getProfile.ts": {
+      "memory":3008,
+      "maxDuration": 60
+    }
+  },
+  "env": {
+    "CONTENTFUL_ACCESS_TOKEN": "@contentful_access_token",
+    "CONTENTFUL_SPACE_ID": "@contentful_space_id"
+  }
 }

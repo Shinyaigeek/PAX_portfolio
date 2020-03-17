@@ -12,7 +12,7 @@ router
     if (!component || component instanceof Promise) {
       throw new Error("please check component");
     }
-    const html = helmet(renderToString(component), "index");
+    const html = helmet(renderToString(component), "main");
     fs.writeFileSync("./public/index.html", html);
   });
 
