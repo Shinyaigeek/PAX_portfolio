@@ -8,6 +8,7 @@ header {
   width: 100vw;
   z-index: $header_z_index;
   background: var(--header-background-color);
+  transition: background 0s ease 0.6s;
 
   &.transparent {
     background: transparent;

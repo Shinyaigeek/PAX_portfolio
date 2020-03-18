@@ -10,6 +10,7 @@ export const Index = Layout(() => (
     <Top />
     <Profile />
     <div className="gallery--slide">
+      <h2>Works</h2>
       <Slide />
       <div className="link">
         <Goto label="Go to Gallery" slug="gallery" />
