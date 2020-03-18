@@ -9,7 +9,12 @@ export const Index = Layout(() => (
   <div className="index">
     <Top />
     <Profile />
-    <Slide />
-    <Goto label="Go to Gallery" slug="gallery" />
+    <div className="gallery--slide">
+      <h2>Works</h2>
+      <Slide />
+      <div className="link">
+        <Goto label="Go to Gallery" slug="gallery" />
+      </div>
+    </div>
   </div>
 ));

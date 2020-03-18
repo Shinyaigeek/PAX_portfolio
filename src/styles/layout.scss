@@ -3,9 +3,12 @@
 
   --theme-background: #fcfcf7;
   --theme-color: #0a0a00;
+  --sub-theme-color: #f2aaf2;
 }
 
 @import "./_components/header";
+@import "./_components/footer";
+@import "./_components/drawer";
 
 .page {
   height: max-content;
@@ -14,4 +17,9 @@
   top: $header_height;
   color: var(--theme-color);
   background: var(--theme-background);
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
 }
