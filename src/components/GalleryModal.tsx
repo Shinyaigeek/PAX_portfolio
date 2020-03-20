@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
+import ArrowRightIcon from "@material-ui/icons/ArrowRight";
+import CloseIcon from "@material-ui/icons/Close";
 
 interface Props {
   src: string;
@@ -18,6 +21,7 @@ export const GalleryModal = (props: {
       <div className="galleryModal">
         <GalleryModalTarget {...props} />
       </div>
+      <GalleryModalController {...props} />
       <GalleryModalLayer setVisible={props.setVisible} />
     </React.Fragment>
   );
@@ -70,8 +74,23 @@ const GalleryModalLayer = (props: { setVisible: (state: boolean) => void }) => {
   );
 };
 
-const GalleryModalController = () => {
-  return <div className="galleryModal--controller"></div>;
+const GalleryModalController = (props: {
+  setTarget: (state: number) => void;
+  setVisible: (state: boolean) => void;
+}) => {
+  return (
+    <div className="galleryModal--controller">
+      <div className="galleryModal--controller__el">
+        <ArrowLeftIcon fontSize="large" />
+      </div>
+      <div className="galleryModal--controller__el">
+        <CloseIcon fontSize="large" />
+      </div>
+      <div className="galleryModal--controller__el">
+        <ArrowRightIcon fontSize="large" />
+      </div>
+    </div>
+  );
 };
 
 const GalleryModalFooter = (props: { contents: Props[]; target: number }) => {
