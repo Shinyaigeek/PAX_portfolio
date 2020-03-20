@@ -1,0 +1,26 @@
+@import "../variables";
+
+.galleryModal {
+  z-index: $gallery_modal_z_index;
+  position: fixed;
+  width: 100vw;
+  top: $header_height;
+  left: 0;
+
+  &--layer {
+    z-index: $gallery_modal_layer_z_index;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  &--target {
+    width: 100vw;
+    height: 60vh;
+    object-fit: contain;
+    display: block;
+  }
+}

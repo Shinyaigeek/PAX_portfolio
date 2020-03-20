@@ -1,9 +1,8 @@
-import fetch from "node-fetch"
-import { NowRequest, NowResponse } from '@now/node'
-
+import fetch from "node-fetch";
+import { NowRequest, NowResponse } from "@now/node";
 
 interface Profile {
-    bio: string
+  bio: string;
 }
 
 export default (req: NowRequest, res: NowResponse) => {
