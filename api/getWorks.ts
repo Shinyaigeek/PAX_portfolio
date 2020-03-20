@@ -24,15 +24,15 @@ export default (_: NowRequest, s: NowResponse) => {
       return i
         .json()
         .then(e => {
-          const u = e.items.map((q: any) => {
-            return {
-              name: q.fields.name,
-              description: q.fields.description,
-              src: g(e.includes.Asset, q.fields.work.sys.id)
-            };
-          });
+          // const u = e.items.map((q: any) => {
+          //   return {
+          //     name: q.fields.name,
+          //     description: q.fields.description,
+          //     src: g(e.includes.Asset, q.fields.work.sys.id)
+          //   };
+          // });
 
-          s.json(u);
+          s.json(e);
         })
         .catch(_ => {
           return false;
