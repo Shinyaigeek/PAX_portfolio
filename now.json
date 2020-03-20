@@ -16,7 +16,11 @@
   ],
   "functions": {
     "api/getProfile.ts": {
-      "memory":3008,
+      "memory": 1024,
+      "maxDuration": 9
+    },
+    "api/getWorks.ts": {
+      "memory": 1024,
       "maxDuration": 9
     }
   },

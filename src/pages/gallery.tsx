@@ -123,27 +123,10 @@ export const Gallery = Layout(() => {
 
   const [contents, setContents] = useState(initialContents);
 
-  const getAsset = (a: any[], t: string) => {
-    for (let d of a) {
-      if (d.sys.id === t) {
-        return d.fields.file.url;
-      }
-    }
-
-    throw new Error("");
-  };
-
   useEffect(() => {
     fetch("/api/getWorks.ts").then(res => {
       res.json().then(json => {
-        const u: Props[] = json.items.map((q: any) => {
-          return {
-            name: q.fields.name,
-            description: q.fields.description,
-            src: getAsset(json.includes.Asset, q.fields.work.sys.id)
-          };
-        });
-        setContents(u);
+        setContents(json);
       });
     });
   }, []);
