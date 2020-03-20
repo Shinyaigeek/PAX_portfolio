@@ -1,0 +1,33 @@
+.gallery {
+  width: 100vw;
+
+  .works {
+    width: 90vw;
+    margin: 12px auto;
+    max-width: 750px;
+  }
+
+  &--el {
+    display: block;
+    width: 27vw;
+    max-width: 240px;
+    height: 27vw;
+    max-height: 240px;
+    border-radius: 3px;
+
+    &__img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &--column {
+    display: flex;
+    width: 100%;
+    height: min-content;
+  }
+}
+
+@import "../_components/gallery_modal";
