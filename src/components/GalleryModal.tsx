@@ -36,6 +36,8 @@ const GalleryModalTarget = (props: {
 
   const galleryModalTargetEl = createRef() as React.RefObject<HTMLImageElement>;
 
+  let touchStartY = -1;
+
   return (
     <img
       src={props.contents[props.target].src}
@@ -72,11 +74,47 @@ const GalleryModalTarget = (props: {
           }
         }
       }}
-      onTouchMove={() => {
-        const el = galleryModalTargetEl.current!;
-        const evt = document.createEvent("HTMLEvents");
-        evt.initEvent("mousemove", true, true); // event type, bubbling, cancelable
-        return el.dispatchEvent(evt);
+      // call stackが溢れる
+      // onTouchMove={() => {
+      //   const el = galleryModalTargetEl.current!;
+      //   const evt = document.createEvent("HTMLEvents");
+      //   evt.initEvent("touchmove", true, true); // event type, bubbling, cancelable
+      //   return el.dispatchEvent(evt);
+      // }}
+
+      onTouchEnd={e => {
+        const targetEl = galleryModalTargetEl.current!;
+        if (e.changedTouches[0].clientY - touchStartY < -50) {
+          const nextTarget =
+            props.target === props.contents.length - 1 ? 0 : props.target + 1;
+          setSwipable(false);
+          targetEl.classList.add("out--topright");
+
+          setTimeout(() => {
+            props.setTarget(nextTarget);
+            targetEl.classList.contains("out--topright") &&
+              targetEl.classList.remove("out--topright");
+            setSwipable(true);
+          }, 1200);
+        }
+
+        if (e.changedTouches[0].clientY - touchStartY > 50) {
+          const nextTarget =
+            props.target === 0 ? props.contents.length - 1 : props.target - 1;
+          setSwipable(false);
+          targetEl.classList.add("out--bottomleft");
+          setTimeout(() => {
+            props.setTarget(nextTarget);
+            targetEl.classList.contains("out--bottomleft") &&
+              targetEl.classList.remove("out--bottomleft");
+            setSwipable(true);
+          }, 1200);
+        }
+
+        touchStartY = -1;
+      }}
+      onTouchStart={e => {
+        touchStartY = e.changedTouches[0].clientY;
       }}
     />
   );
