@@ -40,26 +40,35 @@ const GalleryModalTarget = (props: {
     <img
       src={props.contents[props.target].src}
       className="galleryModal--target"
+      ref={galleryModalTargetEl}
       onWheel={e => {
+        const targetEl = galleryModalTargetEl.current!;
         if (swipable) {
           if (e.deltaY > 50) {
             const nextTarget =
               props.target === props.contents.length - 1 ? 0 : props.target + 1;
-            props.setTarget(nextTarget);
             setSwipable(false);
+            targetEl.classList.add("out--topright");
+
             setTimeout(() => {
+              props.setTarget(nextTarget);
+              targetEl.classList.contains("out--topright") &&
+                targetEl.classList.remove("out--topright");
               setSwipable(true);
-            }, 800);
+            }, 1200);
           }
 
           if (e.deltaY < -50) {
             const nextTarget =
               props.target === 0 ? props.contents.length - 1 : props.target - 1;
-            props.setTarget(nextTarget);
             setSwipable(false);
+            targetEl.classList.add("out--bottomleft");
             setTimeout(() => {
+              props.setTarget(nextTarget);
+              targetEl.classList.contains("out--bottomleft") &&
+                targetEl.classList.remove("out--bottomleft");
               setSwipable(true);
-            }, 800);
+            }, 1200);
           }
         }
       }}
