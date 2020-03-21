@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, createRef } from "react";
 import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import CloseIcon from "@material-ui/icons/Close";
@@ -34,6 +34,8 @@ const GalleryModalTarget = (props: {
 }) => {
   const [swipable, setSwipable] = useState(true);
 
+  const galleryModalTargetEl = createRef() as React.RefObject<HTMLImageElement>;
+
   return (
     <img
       src={props.contents[props.target].src}
@@ -60,6 +62,12 @@ const GalleryModalTarget = (props: {
             }, 800);
           }
         }
+      }}
+      onTouchMove={() => {
+        const el = galleryModalTargetEl.current!;
+        const evt = document.createEvent("HTMLEvents");
+        evt.initEvent("mousemove", true, true); // event type, bubbling, cancelable
+        return el.dispatchEvent(evt);
       }}
     />
   );
