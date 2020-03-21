@@ -1,0 +1,39 @@
+.page--profile {
+  .name {
+    text-align: center;
+
+    .en {
+      font-size: 32px;
+    }
+
+    .ja {
+      font-size: 25px;
+    }
+  }
+
+  .workAbility {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .icon {
+    width: 60vw;
+    max-width: 300px;
+    height: 60vw;
+    max-height: 300px;
+    display: block;
+    object-fit: contain;
+    border-radius: 999px;
+    margin: 12px auto;
+    border: 1px solid var(--theme-color);
+  }
+
+  .bio {
+    width: 75vw;
+    max-width: 700px;
+    height: min-content;
+    min-height: 300px;
+    margin: 6px auto;
+    overflow-wrap: break-word;
+  }
+}
