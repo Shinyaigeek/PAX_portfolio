@@ -22,6 +22,16 @@
     height: 60vh;
     object-fit: contain;
     display: block;
+
+    &.out--topright {
+      transform: translate(100vw, -50vh) rotate(45deg);
+      transition: transform 1s ease 0.1s;
+    }
+
+    &.out--bottomleft {
+      transform: translate(-100vw, 50vh) rotate(-45deg);
+      transition: transform 1s ease 0.1s;
+    }
   }
 
   &--controller {
