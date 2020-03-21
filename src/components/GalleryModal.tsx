@@ -66,7 +66,7 @@ const GalleryModalTarget = (props: {
       onTouchMove={() => {
         const el = galleryModalTargetEl.current!;
         const evt = document.createEvent("HTMLEvents");
-        evt.initEvent("mousemove", true, true); // event type, bubbling, cancelable
+        evt.initEvent("touchmove", true, true); // event type, bubbling, cancelable
         return el.dispatchEvent(evt);
       }}
     />
