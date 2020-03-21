@@ -7,7 +7,9 @@ interface Props {
 
 export const Header = (props: Props) => (
   <header className={`header ${props.drawerOpen ? "transparent" : ""}`}>
-    <div className="title">Chie Shiraishi</div>
+    <a href="/" className="title">
+      Chie Shiraishi
+    </a>
 
     <div className="header--contentsHamburger">
       <div
