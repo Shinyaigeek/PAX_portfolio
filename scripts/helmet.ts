@@ -10,6 +10,7 @@ export const helmet = (component: string, page: string, title?: string) => {
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
             <link rel="stylesheet" href="layout.css">
             <link rel="stylesheet" href="${page}.css">
+            <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap" rel="stylesheet">
         </head>
         <body>
             <div id="_app">

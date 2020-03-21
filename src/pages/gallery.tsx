@@ -104,7 +104,6 @@ const Cell = (props: {
           onClick={() => changeTarget()}
         />
       )}
-      ;
     </div>
   );
 };

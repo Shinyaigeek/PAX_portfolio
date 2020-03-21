@@ -23,4 +23,18 @@
     object-fit: contain;
     display: block;
   }
+
+  &--controller {
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
+    height: 84px;
+    left: 0;
+    display: flex;
+
+    &__el {
+      width: 33vw;
+      text-align: center;
+    }
+  }
 }
