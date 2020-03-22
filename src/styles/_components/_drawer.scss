@@ -24,7 +24,24 @@
   .drawer {
     width: 100vw;
     height: 100vh;
+    position: fixed;
 
     background: var(--drawer-background);
+
+    &--content {
+      height: calc(100vh - #{$header_height});
+      position: relative;
+      top: $header_height;
+    }
+
+    &--list {
+      list-style: none;
+      font-size: 38px;
+      &__anchor {
+        text-decoration: none;
+        color: var(--theme-color);
+        margin: 4px 0;
+      }
+    }
   }
 }
