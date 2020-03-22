@@ -16,12 +16,23 @@ export const GalleryModal = (props: {
   setVisible: (state: boolean) => void;
   setTarget: (state: number) => void;
 }) => {
+  const [swipable, setSwipable] = useState(true);
+  const galleryModalTargetEl = createRef() as React.RefObject<HTMLImageElement>;
   return (
     <React.Fragment>
       <div className="galleryModal">
-        <GalleryModalTarget {...props} />
+        <GalleryModalTarget
+          {...props}
+          setSwipable={setSwipable}
+          swipable={swipable}
+          galleryModalTargetEl={galleryModalTargetEl}
+        />
       </div>
-      <GalleryModalController {...props} />
+      <GalleryModalController
+        {...props}
+        setSwipable={setSwipable}
+        galleryModalTargetEl={galleryModalTargetEl}
+      />
       <GalleryModalLayer setVisible={props.setVisible} />
     </React.Fragment>
   );
@@ -31,45 +42,44 @@ const GalleryModalTarget = (props: {
   contents: Props[];
   target: number;
   setTarget: (state: number) => void;
+  setSwipable: (state: boolean) => void;
+  swipable: boolean;
+  galleryModalTargetEl: React.RefObject<HTMLImageElement>;
 }) => {
-  const [swipable, setSwipable] = useState(true);
-
-  const galleryModalTargetEl = createRef() as React.RefObject<HTMLImageElement>;
-
   let touchStartY = -1;
 
   return (
     <img
       src={props.contents[props.target].src}
       className="galleryModal--target"
-      ref={galleryModalTargetEl}
+      ref={props.galleryModalTargetEl}
       onWheel={e => {
-        const targetEl = galleryModalTargetEl.current!;
-        if (swipable) {
+        const targetEl = props.galleryModalTargetEl.current!;
+        if (props.swipable) {
           if (e.deltaY > 50) {
             const nextTarget =
               props.target === props.contents.length - 1 ? 0 : props.target + 1;
-            setSwipable(false);
+            props.setSwipable(false);
             targetEl.classList.add("out--topright");
 
             setTimeout(() => {
               props.setTarget(nextTarget);
               targetEl.classList.contains("out--topright") &&
                 targetEl.classList.remove("out--topright");
-              setSwipable(true);
+              props.setSwipable(true);
             }, 1200);
           }
 
           if (e.deltaY < -50) {
             const nextTarget =
               props.target === 0 ? props.contents.length - 1 : props.target - 1;
-            setSwipable(false);
+            props.setSwipable(false);
             targetEl.classList.add("out--bottomleft");
             setTimeout(() => {
               props.setTarget(nextTarget);
               targetEl.classList.contains("out--bottomleft") &&
                 targetEl.classList.remove("out--bottomleft");
-              setSwipable(true);
+              props.setSwipable(true);
             }, 1200);
           }
         }
@@ -83,31 +93,31 @@ const GalleryModalTarget = (props: {
       // }}
 
       onTouchEnd={e => {
-        const targetEl = galleryModalTargetEl.current!;
+        const targetEl = props.galleryModalTargetEl.current!;
         if (e.changedTouches[0].clientY - touchStartY < -50) {
           const nextTarget =
             props.target === props.contents.length - 1 ? 0 : props.target + 1;
-          setSwipable(false);
+          props.setSwipable(false);
           targetEl.classList.add("out--topright");
 
           setTimeout(() => {
             props.setTarget(nextTarget);
             targetEl.classList.contains("out--topright") &&
               targetEl.classList.remove("out--topright");
-            setSwipable(true);
+            props.setSwipable(true);
           }, 1200);
         }
 
         if (e.changedTouches[0].clientY - touchStartY > 50) {
           const nextTarget =
             props.target === 0 ? props.contents.length - 1 : props.target - 1;
-          setSwipable(false);
+          props.setSwipable(false);
           targetEl.classList.add("out--bottomleft");
           setTimeout(() => {
             props.setTarget(nextTarget);
             targetEl.classList.contains("out--bottomleft") &&
               targetEl.classList.remove("out--bottomleft");
-            setSwipable(true);
+            props.setSwipable(true);
           }, 1200);
         }
 
@@ -132,24 +142,63 @@ const GalleryModalLayer = (props: { setVisible: (state: boolean) => void }) => {
 const GalleryModalController = (props: {
   setTarget: (state: number) => void;
   setVisible: (state: boolean) => void;
+  target: number;
+  contents: Props[];
+  galleryModalTargetEl: React.RefObject<HTMLImageElement>;
+  setSwipable: (state: boolean) => void;
 }) => {
   return (
     <div className="galleryModal--controller">
-      <div className="galleryModal--controller__el">
+      <div
+        className="galleryModal--controller__el"
+        onClick={() => {
+          const targetEl = props.galleryModalTargetEl.current!;
+          const nextTarget =
+            props.target === 0 ? props.contents.length - 1 : props.target - 1;
+          props.setSwipable(false);
+          targetEl.classList.add("out--bottomleft");
+          setTimeout(() => {
+            props.setTarget(nextTarget);
+            targetEl.classList.contains("out--bottomleft") &&
+              targetEl.classList.remove("out--bottomleft");
+            props.setSwipable(true);
+          }, 1200);
+        }}
+      >
         <ArrowLeftIcon
           style={{
             fontSize: "48px"
           }}
         />
       </div>
-      <div className="galleryModal--controller__el">
+      <div
+        className="galleryModal--controller__el"
+        onClick={() => {
+          props.setVisible(false);
+        }}
+      >
         <CloseIcon
           style={{
             fontSize: "48px"
           }}
         />
       </div>
-      <div className="galleryModal--controller__el">
+      <div
+        className="galleryModal--controller__el"
+        onClick={() => {
+          const targetEl = props.galleryModalTargetEl.current!;
+          const nextTarget =
+            props.target === props.contents.length - 1 ? 0 : props.target + 1;
+          props.setSwipable(false);
+          targetEl.classList.add("out--topright");
+          setTimeout(() => {
+            props.setTarget(nextTarget);
+            targetEl.classList.contains("out--topright") &&
+              targetEl.classList.remove("out--topright");
+            props.setSwipable(true);
+          }, 1200);
+        }}
+      >
         <ArrowRightIcon
           style={{
             fontSize: "48px"
