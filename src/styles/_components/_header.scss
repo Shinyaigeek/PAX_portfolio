@@ -20,6 +20,9 @@ header {
     background-image: url("../../static/header.png");
     background-repeat: no-repeat;
     background-size: contain;
+    display: block;
+    text-decoration: none;
+    color: var(--theme-color);
   }
 
   .header--contentsHamburger {
