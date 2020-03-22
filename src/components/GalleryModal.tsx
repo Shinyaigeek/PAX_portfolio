@@ -136,13 +136,25 @@ const GalleryModalController = (props: {
   return (
     <div className="galleryModal--controller">
       <div className="galleryModal--controller__el">
-        <ArrowLeftIcon fontSize="large" />
+        <ArrowLeftIcon
+          style={{
+            fontSize: "48px"
+          }}
+        />
       </div>
       <div className="galleryModal--controller__el">
-        <CloseIcon fontSize="large" />
+        <CloseIcon
+          style={{
+            fontSize: "48px"
+          }}
+        />
       </div>
       <div className="galleryModal--controller__el">
-        <ArrowRightIcon fontSize="large" />
+        <ArrowRightIcon
+          style={{
+            fontSize: "48px"
+          }}
+        />
       </div>
     </div>
   );

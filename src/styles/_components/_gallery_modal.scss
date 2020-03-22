@@ -41,10 +41,13 @@
     height: 84px;
     left: 0;
     display: flex;
+    background: var(--theme-background);
+    z-index: $gallery_modal_z_index;
 
     &__el {
       width: 33vw;
       text-align: center;
+      margin: auto;
     }
   }
 }
