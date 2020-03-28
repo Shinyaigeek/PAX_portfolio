@@ -57,7 +57,7 @@ export const GalleryModal = (props: {
           swipable={swipable}
         />
       </div>
-      <GalleryModalController {...props} />
+      <GalleryModalController {...props} handleViewingImg={handleViewingImg} />
       <GalleryModalLayer setVisible={props.setVisible} />
     </React.Fragment>
   );
@@ -129,17 +129,45 @@ const GalleryModalLayer = (props: { setVisible: (state: boolean) => void }) => {
 const GalleryModalController = (props: {
   setTarget: (state: number) => void;
   setVisible: (state: boolean) => void;
+  handleViewingImg: (next: boolean) => void;
 }) => {
   return (
     <div className="galleryModal--controller">
-      <div className="galleryModal--controller__el">
-        <ArrowLeftIcon fontSize="large" />
+      <div
+        className="galleryModal--controller__el"
+        onClick={() => {
+          props.handleViewingImg(false);
+        }}
+      >
+        <ArrowLeftIcon
+          style={{
+            fontSize: "72px"
+          }}
+        />
       </div>
-      <div className="galleryModal--controller__el">
-        <CloseIcon fontSize="large" />
+      <div
+        className="galleryModal--controller__el"
+        onClick={() => {
+          props.setVisible(false);
+        }}
+      >
+        <CloseIcon
+          style={{
+            fontSize: "72px"
+          }}
+        />
       </div>
-      <div className="galleryModal--controller__el">
-        <ArrowRightIcon fontSize="large" />
+      <div
+        className="galleryModal--controller__el"
+        onClick={() => {
+          props.handleViewingImg(true);
+        }}
+      >
+        <ArrowRightIcon
+          style={{
+            fontSize: "72px"
+          }}
+        />
       </div>
     </div>
   );
