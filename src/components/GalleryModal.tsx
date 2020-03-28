@@ -16,12 +16,48 @@ export const GalleryModal = (props: {
   setVisible: (state: boolean) => void;
   setTarget: (state: number) => void;
 }) => {
+  const galleryModalTargetEl = createRef() as React.RefObject<HTMLImageElement>;
+  const [swipable, setSwipable] = useState(true);
+
+  const handleViewingImg = (isUp: boolean) => {
+    const targetEl = galleryModalTargetEl.current!;
+
+    if (isUp) {
+      const nextTarget =
+        props.target === props.contents.length - 1 ? 0 : props.target + 1;
+      setSwipable(false);
+      targetEl.classList.add("out--topright");
+
+      setTimeout(() => {
+        props.setTarget(nextTarget);
+        targetEl.classList.contains("out--topright") &&
+          targetEl.classList.remove("out--topright");
+        setSwipable(true);
+      }, 1200);
+    } else {
+      const nextTarget =
+        props.target === 0 ? props.contents.length - 1 : props.target - 1;
+      setSwipable(false);
+      targetEl.classList.add("out--bottomleft");
+      setTimeout(() => {
+        props.setTarget(nextTarget);
+        targetEl.classList.contains("out--bottomleft") &&
+          targetEl.classList.remove("out--bottomleft");
+        setSwipable(true);
+      }, 1200);
+    }
+  };
   return (
     <React.Fragment>
       <div className="galleryModal">
-        <GalleryModalTarget {...props} />
+        <GalleryModalTarget
+          {...props}
+          handleViewingImg={handleViewingImg}
+          galleryModalTargetEl={galleryModalTargetEl}
+          swipable={swipable}
+        />
       </div>
-      <GalleryModalController {...props} />
+      <GalleryModalController {...props} handleViewingImg={handleViewingImg} />
       <GalleryModalLayer setVisible={props.setVisible} />
     </React.Fragment>
   );
@@ -31,46 +67,26 @@ const GalleryModalTarget = (props: {
   contents: Props[];
   target: number;
   setTarget: (state: number) => void;
+  handleViewingImg: (state: boolean) => void;
+  galleryModalTargetEl: React.RefObject<HTMLImageElement>;
+  swipable: boolean;
 }) => {
-  const [swipable, setSwipable] = useState(true);
-
-  const galleryModalTargetEl = createRef() as React.RefObject<HTMLImageElement>;
-
   let touchStartY = -1;
 
   return (
     <img
       src={props.contents[props.target].src}
       className="galleryModal--target"
-      ref={galleryModalTargetEl}
+      ref={props.galleryModalTargetEl}
       onWheel={e => {
-        const targetEl = galleryModalTargetEl.current!;
-        if (swipable) {
+        const targetEl = props.galleryModalTargetEl.current!;
+        if (props.swipable) {
           if (e.deltaY > 50) {
-            const nextTarget =
-              props.target === props.contents.length - 1 ? 0 : props.target + 1;
-            setSwipable(false);
-            targetEl.classList.add("out--topright");
-
-            setTimeout(() => {
-              props.setTarget(nextTarget);
-              targetEl.classList.contains("out--topright") &&
-                targetEl.classList.remove("out--topright");
-              setSwipable(true);
-            }, 1200);
+            props.handleViewingImg(true);
           }
 
           if (e.deltaY < -50) {
-            const nextTarget =
-              props.target === 0 ? props.contents.length - 1 : props.target - 1;
-            setSwipable(false);
-            targetEl.classList.add("out--bottomleft");
-            setTimeout(() => {
-              props.setTarget(nextTarget);
-              targetEl.classList.contains("out--bottomleft") &&
-                targetEl.classList.remove("out--bottomleft");
-              setSwipable(true);
-            }, 1200);
+            props.handleViewingImg(false);
           }
         }
       }}
@@ -83,32 +99,13 @@ const GalleryModalTarget = (props: {
       // }}
 
       onTouchEnd={e => {
-        const targetEl = galleryModalTargetEl.current!;
+        const targetEl = props.galleryModalTargetEl.current!;
         if (e.changedTouches[0].clientY - touchStartY < -50) {
-          const nextTarget =
-            props.target === props.contents.length - 1 ? 0 : props.target + 1;
-          setSwipable(false);
-          targetEl.classList.add("out--topright");
-
-          setTimeout(() => {
-            props.setTarget(nextTarget);
-            targetEl.classList.contains("out--topright") &&
-              targetEl.classList.remove("out--topright");
-            setSwipable(true);
-          }, 1200);
+          props.handleViewingImg(true);
         }
 
         if (e.changedTouches[0].clientY - touchStartY > 50) {
-          const nextTarget =
-            props.target === 0 ? props.contents.length - 1 : props.target - 1;
-          setSwipable(false);
-          targetEl.classList.add("out--bottomleft");
-          setTimeout(() => {
-            props.setTarget(nextTarget);
-            targetEl.classList.contains("out--bottomleft") &&
-              targetEl.classList.remove("out--bottomleft");
-            setSwipable(true);
-          }, 1200);
+          props.handleViewingImg(false);
         }
 
         touchStartY = -1;
@@ -132,17 +129,45 @@ const GalleryModalLayer = (props: { setVisible: (state: boolean) => void }) => {
 const GalleryModalController = (props: {
   setTarget: (state: number) => void;
   setVisible: (state: boolean) => void;
+  handleViewingImg: (next: boolean) => void;
 }) => {
   return (
     <div className="galleryModal--controller">
-      <div className="galleryModal--controller__el">
-        <ArrowLeftIcon fontSize="large" />
+      <div
+        className="galleryModal--controller__el"
+        onClick={() => {
+          props.handleViewingImg(false);
+        }}
+      >
+        <ArrowLeftIcon
+          style={{
+            fontSize: "72px"
+          }}
+        />
       </div>
-      <div className="galleryModal--controller__el">
-        <CloseIcon fontSize="large" />
+      <div
+        className="galleryModal--controller__el"
+        onClick={() => {
+          props.setVisible(false);
+        }}
+      >
+        <CloseIcon
+          style={{
+            fontSize: "72px"
+          }}
+        />
       </div>
-      <div className="galleryModal--controller__el">
-        <ArrowRightIcon fontSize="large" />
+      <div
+        className="galleryModal--controller__el"
+        onClick={() => {
+          props.handleViewingImg(true);
+        }}
+      >
+        <ArrowRightIcon
+          style={{
+            fontSize: "72px"
+          }}
+        />
       </div>
     </div>
   );
