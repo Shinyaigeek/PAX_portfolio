@@ -62,7 +62,7 @@
     "node-fetch": "^2.6.0",
     "node-sass": "^4.13.1",
     "nodemon": "^2.0.2",
-    "now": "^17.0.4",
+    "now": "^19.0.0",
     "parcel": "^1.12.4",
     "parcel-bundler": "^1.12.4",
     "react": "^16.13.0",
