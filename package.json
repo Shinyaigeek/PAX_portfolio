@@ -49,6 +49,8 @@
     "@types/universal-router": "^8.0.0",
     "@typescript-eslint/eslint-plugin": "^2.23.0",
     "@typescript-eslint/parser": "^2.23.0",
+    "@zeit-ui/react": "^1.2.0-rc.0",
+    "@zeit-ui/react-icons": "^1.2.2",
     "dart-sass": "^1.25.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.10.0",
