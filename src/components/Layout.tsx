@@ -2,6 +2,7 @@ import React, { useState, createRef } from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { Drawer } from "./Drawer";
+import { FooterBar } from "./FooterBar";
 
 export const Layout = (Component: (props?: any) => JSX.Element) => {
   return (props?: any) => {
@@ -25,6 +26,7 @@ export const Layout = (Component: (props?: any) => JSX.Element) => {
         </div>
 
         <Footer />
+        <FooterBar />
       </>
     );
   };
