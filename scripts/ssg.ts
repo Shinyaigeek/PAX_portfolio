@@ -1,6 +1,6 @@
 import React from "react";
 import { renderToString } from "react-dom/server";
-import { router } from "../src/router";
+import { router } from "../src/ssgRouter";
 import { helmet } from "./helmet";
 import fs from "fs";
 
@@ -25,7 +25,8 @@ router
       throw new Error("please check component");
     }
     const html = helmet(renderToString(component), "profile");
-    fs.writeFileSync("./public/profile.html", html);
+    fs.mkdirSync("./public/profile");
+    fs.writeFileSync("./public/profile/index.html", html);
   });
 
 router
@@ -37,5 +38,6 @@ router
       throw new Error("please check component");
     }
     const html = helmet(renderToString(component), "gallery");
-    fs.writeFileSync("./public/gallery.html", html);
+    fs.mkdirSync("./public/gallery");
+    fs.writeFileSync("./public/gallery/index.html", html);
   });

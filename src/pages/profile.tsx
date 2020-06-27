@@ -3,7 +3,7 @@ import { Layout } from "../components/Layout";
 
 import Skeleton from "@material-ui/lab/Skeleton";
 
-export const Profile = Layout(() => {
+const Profile = Layout(() => {
   const [isLoading, setIsLoading] = useState(true);
   const [bio, setBio] = useState("");
   const [educationalBackground, setEducationalBackground] = useState([
@@ -58,3 +58,5 @@ export const Profile = Layout(() => {
     </div>
   );
 });
+
+export default Profile;

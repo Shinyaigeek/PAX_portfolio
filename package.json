@@ -11,14 +11,14 @@
     "build:styles:profile": "parcel build ./src/styles/pages/profile.scss --out-dir public",
     "build:styles:gallery": "parcel build ./src/styles/pages/gallery.scss --out-dir public",
     "build:styles:layout": "parcel build ./src/styles/layout.scss --out-dir public",
-    "build:styles": "yarn run build:styles:index && yarn run build:styles:layout && yarn run build:styles:profile && yarn run build:styles:gallery",
+    "build:styles": "yarn run build:styles:layout",
     "now:build": "yarn run build:styles && yarn run build:client && yarn run ssg:img && yarn run ssg:html && parcel build ./public/*.html",
     "lint": "eslint src/*/**.tsx && stylelint src/styles/**.scss && stylelint src/styles/*/**.scss",
     "lint:fix": "eslint --fix src/*/**.tsx && stylelint --fix src/styles/**.scss && stylelint --fix src/styles/*/**.scss",
     "format": "prettier src/*/**.tsx --write --config .prettierrc && prettier src/styles/**.scss --write --config .prettierrc && prettier src/styles/*/**.scss --write --config .prettierrc && yarn run lint:fix",
     "ssg:html": "ts-node ./scripts/ssg.ts",
     "ssg:img": "ts-node ./scripts/copyImg.ts",
-    "build:client": "parcel build ./client/main.ts --out-dir public && parcel build ./client/profile.ts --out-dir public && parcel build ./client/gallery.ts --out-dir public"
+    "build:client": "parcel build ./client/main.tsx --out-dir public && parcel build ./client/profile.tsx --out-dir public && parcel build ./client/gallery.tsx --out-dir public"
   },
   "husky": {
     "hooks": {
@@ -42,6 +42,7 @@
     "@material-ui/lab": "^4.0.0-alpha.45",
     "@now/node": "^1.4.1",
     "@types/fs-extra": "^8.1.0",
+    "@types/history": "^4.7.6",
     "@types/ncp": "^2.0.3",
     "@types/node-fetch": "^2.5.5",
     "@types/react": "^16.9.23",
@@ -59,6 +60,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.19.0",
     "fs-extra": "^8.1.0",
+    "history": "^5.0.0",
     "husky": "^4.2.3",
     "ncp": "^2.0.0",
     "node-fetch": "^2.6.0",

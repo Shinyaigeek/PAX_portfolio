@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "./Link";
 
 interface Props {
   drawerOpen: boolean;
@@ -18,22 +19,26 @@ export const Drawer = (props: Props) => {
         <div className="drawer--content">
           <ul className="drawer--list">
             <li>
-              <a href="/" className="drawer--list__anchor">
-                HOME
-              </a>
+              <Link class="drawer--list__anchor" to="/" label={"HOME"} />
             </li>
             <li>
-              <a href="/profile.html" className="drawer--list__anchor">
-                Profile
-              </a>
+              <Link
+                class="drawer--list__anchor"
+                to="/profile"
+                label={"PROFILE"}
+              />
             </li>
             <li>
-              <a href="/gallery.html" className="drawer--list__anchor">
-                Gallery
-              </a>
+              <Link
+                class="drawer--list__anchor"
+                to="/gallery"
+                label={"GALLERY"}
+              />
             </li>
             <li>
-              <a href="mailto:">Contact</a>
+              <a href="mailto:" className="drawer--list__anchor">
+                Contact
+              </a>
             </li>
           </ul>
         </div>

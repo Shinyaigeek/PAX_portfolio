@@ -108,7 +108,7 @@ const Cell = (props: {
   );
 };
 
-export const Gallery = Layout(() => {
+const Gallery = Layout(() => {
   const [isLoading, setIsLoading] = useState(true);
   const [target, setTarget] = useState(0);
   const [visible, setVisible] = useState(false);
@@ -153,3 +153,5 @@ export const Gallery = Layout(() => {
     </div>
   );
 });
+
+export default Gallery;
