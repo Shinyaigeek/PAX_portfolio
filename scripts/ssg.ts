@@ -1,6 +1,6 @@
 import React from "react";
 import { renderToString } from "react-dom/server";
-import { router } from "../src/router";
+import { router } from "../src/ssgRouter";
 import { helmet } from "./helmet";
 import fs from "fs";
 
