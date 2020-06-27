@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "./Link";
 
 interface Props {
   drawerOpen: boolean;
@@ -7,9 +8,10 @@ interface Props {
 
 export const Header = (props: Props) => (
   <header className={`header ${props.drawerOpen ? "transparent" : ""}`}>
-    <a href="/" className="title">
+    {/* <a href="/" className="title">
       Chie Shiraishi
-    </a>
+    </a> */}
+    <Link to="/" class="title" label="Chie Shiraishi" />
 
     <div className="header--contentsHamburger">
       <div

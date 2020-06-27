@@ -1,20 +1,15 @@
 import * as React from "react";
 import { Home, Smile, PenTool } from "@zeit-ui/react-icons";
+import { Link } from "./Link";
 
 export const FooterBar = () => {
   return (
     <div className="footer--bar">
-      <div className="footer--el">
-        <Smile />
-      </div>
+      <Link class="footer--el" label={<Smile />} to="/profile" />
 
-      <div className="footer--el">
-        <Home />
-      </div>
+      <Link class="footer--el" label={<Home />} to="/" />
 
-      <div className="footer--el">
-        <PenTool />
-      </div>
+      <Link class="footer--el" label={<PenTool />} to="/gallery" />
     </div>
   );
 };

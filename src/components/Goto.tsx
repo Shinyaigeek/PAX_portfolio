@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "./Link";
 
 interface Props {
   label: string;
@@ -7,8 +8,10 @@ interface Props {
 
 export const Goto = (props: Props) => {
   return (
-    <a className="goto" href={`/${props.slug}.html`}>
-      {props.label} &gt;
-    </a>
+    <Link
+      class="goto"
+      to={`/${props.slug}.html`}
+      label={`${props.label} &gt;`}
+    />
   );
 };

@@ -5,7 +5,7 @@ import { Profile } from "../components/Profile";
 import { Slide } from "../components/Slide";
 import { Goto } from "../components/Goto";
 
-export const Index = Layout(() => (
+const Index = Layout(() => (
   <div className="index">
     <Top />
     <Profile />
@@ -18,3 +18,5 @@ export const Index = Layout(() => (
     </div>
   </div>
 ));
+
+export default Index;
