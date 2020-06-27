@@ -25,6 +25,7 @@ router
       throw new Error("please check component");
     }
     const html = helmet(renderToString(component), "profile");
+    fs.mkdirSync("./public/profile");
     fs.writeFileSync("./public/profile/index.html", html);
   });
 
@@ -37,5 +38,6 @@ router
       throw new Error("please check component");
     }
     const html = helmet(renderToString(component), "gallery");
+    fs.mkdirSync("./public/gallery");
     fs.writeFileSync("./public/gallery/index.html", html);
   });
