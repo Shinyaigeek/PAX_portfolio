@@ -1,11 +1,8 @@
 import * as React from "react";
 import { router } from "../router";
 import { render } from "react-dom";
-import { createBrowserHistory } from "history";
 
 const isSSG = typeof document === "undefined";
-
-const history = !isSSG ? createBrowserHistory() : undefined;
 
 interface Props {
   to: string;
@@ -35,14 +32,7 @@ export const Link = (props: Props) => {
             }
             evt.preventDefault();
             if (!isSSG) {
-              if (
-                props.to !==
-                history!
-                  .createHref(history!.location)
-                  .replace(location.origin, "")
-              ) {
-                history!.push(props.to);
-              }
+              history.pushState(null, "", props.to);
             }
             render(component, document.getElementById("_app"));
           });
