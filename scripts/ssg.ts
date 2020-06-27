@@ -25,7 +25,7 @@ router
       throw new Error("please check component");
     }
     const html = helmet(renderToString(component), "profile");
-    fs.writeFileSync("./public/profile.html", html);
+    fs.writeFileSync("./public/profile/index.html", html);
   });
 
 router
@@ -37,5 +37,5 @@ router
       throw new Error("please check component");
     }
     const html = helmet(renderToString(component), "gallery");
-    fs.writeFileSync("./public/gallery.html", html);
+    fs.writeFileSync("./public/gallery/index.html", html);
   });
