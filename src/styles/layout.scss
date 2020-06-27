@@ -29,3 +29,7 @@ body {
   margin: 0;
   font-family: $font;
 }
+
+@import "./pages/gallery";
+@import "./pages/main";
+@import "./pages/profile";
