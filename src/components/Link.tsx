@@ -14,6 +14,7 @@ export const Link = (props: Props) => {
     <a
       className={`link ${props.class}`}
       id={props.id}
+      href={`${props.to}`}
       onClick={() => {
         router
           .resolve({
