@@ -18,6 +18,7 @@ export const Link = (props: Props) => {
       id={props.id}
       href={`${props.to}`}
       onClick={(evt: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        evt.preventDefault();
         router
           .resolve({
             pathname: props.to
@@ -30,7 +31,6 @@ export const Link = (props: Props) => {
             if (!document) {
               throw new Error("");
             }
-            evt.preventDefault();
             if (!isSSG) {
               history.pushState(null, "", props.to);
             }
