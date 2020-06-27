@@ -7,7 +7,7 @@ const Gallery = React.lazy(() => import("./pages/gallery"));
 
 export const routes = [
   {
-    path: "",
+    path: "/",
     action: () => (
       <React.Suspense fallback={<div>loading</div>}>
         <Index />

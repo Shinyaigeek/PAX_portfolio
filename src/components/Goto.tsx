@@ -8,10 +8,6 @@ interface Props {
 
 export const Goto = (props: Props) => {
   return (
-    <Link
-      class="goto"
-      to={`/${props.slug}.html`}
-      label={`${props.label} &gt;`}
-    />
+    <Link class="goto" to={`/${props.slug}`} label={`${props.label} &gt;`} />
   );
 };
