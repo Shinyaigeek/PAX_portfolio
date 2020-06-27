@@ -18,6 +18,8 @@ export const Link = (props: Props) => {
       id={props.id}
       href={`${props.to}`}
       onClick={(evt: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        const meta = evt.metaKey;
+        const ctrl = evt.ctrlKey;
         evt.preventDefault();
         router
           .resolve({
@@ -32,9 +34,15 @@ export const Link = (props: Props) => {
               throw new Error("");
             }
             if (!isSSG) {
-              history.pushState(null, "", props.to);
+              if (meta || ctrl) {
+                window.open(props.to);
+              } else {
+                history.pushState(null, "", props.to);
+                render(component, document.getElementById("_app"));
+              }
+            } else {
+              render(component, document.getElementById("_app"));
             }
-            render(component, document.getElementById("_app"));
           });
       }}
     >
