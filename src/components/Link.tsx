@@ -18,6 +18,7 @@ export const Link = (props: Props) => {
       id={props.id}
       href={`${props.to}`}
       onClick={(evt: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        console.log(evt)
         evt.preventDefault();
         router
           .resolve({
@@ -32,6 +33,7 @@ export const Link = (props: Props) => {
               throw new Error("");
             }
             if (!isSSG) {
+              console.log(evt);
               if (evt.metaKey || evt.ctrlKey) {
                 window.open(props.to);
               } else {
